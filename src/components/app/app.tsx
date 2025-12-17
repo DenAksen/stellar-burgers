@@ -22,7 +22,7 @@ import {
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from '../../services/store';
 import { getFeedsThunk } from '../../slices/feedsSlice';
-import { getIngridientsThunk } from '../../slices/burger';
+import { getIngridientsThunk } from '../../slices/ingridientsSlice';
 import { useEffect } from 'react';
 import ProtectedRoute from '../../protect-router/protectedRouter';
 import { fetchUserThunk } from '../../slices/userSlice';

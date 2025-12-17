@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { TTabMode } from '@utils-types';
 import { BurgerIngredientsUI } from '../ui/burger-ingredients';
 import { useSelector } from 'react-redux';
-import { burgerSelectors } from '../../slices/burger';
+import { burgerSelectors } from '../../slices/ingridientsSlice';
 
 export const BurgerIngredients: FC = () => {
   const ingredients = useSelector(burgerSelectors.selectIngridients);

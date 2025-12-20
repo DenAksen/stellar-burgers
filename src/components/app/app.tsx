@@ -34,7 +34,6 @@ const App = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getFeedsThunk());
     dispatch(getIngridientsThunk());
     dispatch(fetchUserThunk());
   }, [dispatch]);
@@ -123,7 +122,7 @@ const App = () => {
           <Route
             path='/ingredients/:id'
             element={
-              <Modal onClose={handleModalClose} title={''}>
+              <Modal onClose={handleModalClose} title={'Детали ингридиента'}>
                 <IngredientDetails />
               </Modal>
             }

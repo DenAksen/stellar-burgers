@@ -1,25 +1,26 @@
-import { FC, useMemo } from 'react';
+import { FC, useEffect, useMemo } from 'react';
 import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient } from '@utils-types';
-import { useSelector } from '../../services/store';
+import { useDispatch, useSelector } from '../../services/store';
 import { burgerSelectors } from '../../slices/ingridientsSlice';
 import { feedsSelectors } from '../../slices/feedsSlice';
 import { useParams } from 'react-router-dom';
+import {
+  getOrderByNumberThunk,
+  userOderSelectors
+} from '../../slices/userOrdersSlise';
 
 export const OrderInfo: FC = () => {
-  /** TODO: взять переменные orderData и ingredients из стора */
-  const ordersData = useSelector(feedsSelectors.selectFeedsOrders);
+  const dispatch = useDispatch();
   const { number } = useParams<{ number: string }>();
-  const orderData = useMemo(() => {
-    if (!number || !ordersData.length) return null;
-
+  useEffect(() => {
+    if (!number) return;
     const orderNumber = parseInt(number, 10);
-
-    // Ищем заказ в массиве
-    return ordersData.find((order) => order.number === orderNumber);
-  }, [number, ordersData]);
-
+    dispatch(getOrderByNumberThunk(orderNumber));
+  }, [dispatch]);
+  /** TODO: взять переменные orderData и ingredients из стора */
+  const orderData = useSelector(userOderSelectors.selectorOrderInfoData);
   const ingredients: TIngredient[] = useSelector(
     burgerSelectors.selectIngridients
   );

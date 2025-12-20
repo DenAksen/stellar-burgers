@@ -15,10 +15,7 @@ const initialState: BurgerState = {
 
 export const getIngridientsThunk = createAsyncThunk(
   `${BURGER_SLICE_NAME}/getIngridients`,
-  async () => {
-    const data = await getIngredientsApi();
-    return data;
-  }
+  getIngredientsApi
 );
 
 const burgerSlice = createSlice({

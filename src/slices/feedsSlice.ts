@@ -19,10 +19,7 @@ const initialState: FeedState = {
 
 export const getFeedsThunk = createAsyncThunk(
   `${BURGER_SLICE_NAME}/getFeeds`,
-  async () => {
-    const data = await getFeedsApi();
-    return data;
-  }
+  getFeedsApi
 );
 
 const feedsSlice = createSlice({

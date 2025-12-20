@@ -23,12 +23,16 @@ export const constructorBurgerSlice = createSlice({
     addBun: (state, action: PayloadAction<TIngredient>) => {
       state.items.bun = action.payload;
     },
-    addIngredient: (state, action: PayloadAction<TIngredient>) => {
-      const ingridient: TConstructorIngredient = {
-        ...action.payload,
-        id: nanoid()
-      };
-      state.items.ingredients.push(ingridient);
+    addIngredient: {
+      prepare: (ingridient: TIngredient) => ({
+        payload: {
+          ...ingridient,
+          id: nanoid()
+        }
+      }),
+      reducer: (state, action: PayloadAction<TConstructorIngredient>) => {
+        state.items.ingredients.push(action.payload);
+      }
     },
     removeIngredient: (state, action: PayloadAction<string>) => {
       state.items.ingredients = state.items.ingredients.filter(

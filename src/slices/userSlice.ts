@@ -28,7 +28,7 @@ const initialState: UserState = {
 
 export const fetchUserThunk = createAsyncThunk(
   `${USER_SLICE_NAME}/fetchUser`,
-  async () => await getUserApi()
+  getUserApi
 );
 
 export const loginUserThunk = createAsyncThunk(
@@ -61,10 +61,7 @@ export const updateUserThunk = createAsyncThunk(
 
 export const logoutThunk = createAsyncThunk(
   `${USER_SLICE_NAME}/logout`,
-  async () => {
-    const data = await logoutApi();
-    return data;
-  }
+  logoutApi
 );
 
 const userSlice = createSlice({

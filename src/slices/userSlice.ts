@@ -141,10 +141,6 @@ const userSlice = createSlice({
         state.requestStatus = RequestStatus.Failed;
         state.errorText = 'Ошибка logout';
       });
-    //   .addMatcher(
-    //     (action) => action.type === `${USER_SLICE_NAME}/fetchUser/pending`,
-    //     (state, action) => {}
-    //   );
   },
   selectors: {
     selectUser: (state) => state.userData,

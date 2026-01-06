@@ -30,6 +30,9 @@ const burgerSlice = createSlice({
       .addCase(getIngridientsThunk.fulfilled, (state, action) => {
         state.ingredients = action.payload;
         state.ingredientsLoading = false;
+      })
+      .addCase(getIngridientsThunk.rejected, (state) => {
+        state.ingredientsLoading = false;
       });
   },
   selectors: {

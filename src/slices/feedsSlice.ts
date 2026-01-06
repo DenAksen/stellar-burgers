@@ -34,6 +34,9 @@ const feedsSlice = createSlice({
       .addCase(getFeedsThunk.fulfilled, (state, action) => {
         state.feedsData = action.payload;
         state.feedsLoading = false;
+      })
+      .addCase(getFeedsThunk.rejected, (state) => {
+        state.feedsLoading = false;
       });
   },
   selectors: {

@@ -12,16 +12,9 @@ import {
 import '../../index.css';
 import styles from './app.module.css';
 
-import {
-  AppHeader,
-  FeedInfo,
-  IngredientDetails,
-  Modal,
-  OrderInfo
-} from '@components';
+import { AppHeader, IngredientDetails, Modal, OrderInfo } from '@components';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from '../../services/store';
-import { getFeedsThunk } from '../../slices/feedsSlice';
 import { getIngridientsThunk } from '../../slices/ingridientsSlice';
 import { useEffect } from 'react';
 import ProtectedRoute from '../../protect-router/protectedRouter';
